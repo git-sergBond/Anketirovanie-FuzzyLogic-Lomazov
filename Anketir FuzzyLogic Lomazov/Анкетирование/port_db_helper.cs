@@ -112,5 +112,90 @@ namespace Анкетирование
             CMD.ExecuteNonQuery();
             DB.Close();
         }
+
+        public static List<String> get_rules(int id_test)
+        {
+            List<String> result = new List<string>();
+            SQLiteConnection DB = new SQLiteConnection(port_db_helper.dbName);
+            DB.Open();
+            SQLiteCommand CMD = DB.CreateCommand();
+            CMD.CommandText = "SELECT * FROM rules WHERE id_tests = " + id_test;
+            SQLiteDataReader reader = CMD.ExecuteReader();
+            if (reader == null) return null;
+            while (reader.Read()) result.Add(reader["name"].ToString());
+            DB.Close();
+            return result;
+        }
+
+        public static void insert_rule(int id_test,
+            string conclusion,
+            double kof_low, double kof_high,
+            int id_type,
+            int id_A, int id_A_val,
+            int id_B, int id_B_val,
+            int id_C, int id_C_val)
+        {
+            SQLiteConnection DB = new SQLiteConnection(dbName);
+            SQLiteCommand CMD = DB.CreateCommand();
+            CMD = DB.CreateCommand();
+            CMD.CommandText =
+                "INSERT INTO conf_rules " +
+                "(`id_test`, `conclusion`, `kof_low`, `kof_high`, `id_type`, `id_A`, `id_A_val`, `id_B`, `id_B_val`, `id_C`, `id_C_val`)" +
+                "VALUES ( "
+                + id_test+ ", "+
+                " '" +conclusion + "', " +
+                kof_low.ToString().Replace(",", ".") + "," + kof_high.ToString().Replace(",", ".") + "," +
+                id_type + "," +
+                id_A + "," + id_A_val + "," +
+                id_B + "," + id_B_val + "," +
+                id_C + "," + id_C_val + ")";
+            MessageBox.Show(CMD.CommandText.ToString());
+            DB.Open();
+            CMD.ExecuteNonQuery();
+            DB.Close();
+        }
+        public static void update_rule(
+            int id,
+            string conclusion,
+            double kof_low, double kof_high,
+            int id_type,
+            int id_A, int id_A_val,
+            int id_B, int id_B_val,
+            int id_C, int id_C_val)
+        {
+            SQLiteConnection DB = new SQLiteConnection(dbName);
+            SQLiteCommand CMD = DB.CreateCommand();
+            CMD = DB.CreateCommand();
+            CMD.CommandText = "UPDATE conf_rules SET" +
+                " conclusion= '" + conclusion + "'" +
+                ", kof_low = " + kof_low.ToString().Replace(",", ".")+
+                ", kof_high = " + kof_high.ToString().Replace(",", ".") +
+                ", id_type = "+ id_type + 
+                ", id_A = "+ id_A + 
+                ", id_A_val = "+ id_A_val + 
+                ", id_B = "+ id_B +
+                ", id_B_val = "+ id_B_val + 
+                ", id_C = "+ id_C +
+                ", id_C_val = "+ id_C_val+
+                " WHERE id = "+id;
+            DB.Open();
+            CMD.ExecuteNonQuery();
+            DB.Close();
+        }
+        public static void delete_rule(int id_rule)
+        {
+            if (id_rule == -1) return;
+
+            SQLiteConnection DB = new SQLiteConnection(dbName);
+            SQLiteCommand CMD = DB.CreateCommand();
+            CMD = DB.CreateCommand();
+
+            CMD.CommandText = "DELETE FROM conf_rules WHERE id = @id_rule";
+            CMD.Parameters.AddWithValue("@id_rule", id_rule);
+
+            DB.Open();
+            CMD.ExecuteNonQuery();
+            DB.Close();
+        }
     }
 }

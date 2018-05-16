@@ -18,7 +18,7 @@ namespace Анкетирование
 
     public class def_cortege: view_plus_data
     {
-        int length;
+        public int length;
         public ArrayList cols;
 
         public def_cortege()
@@ -68,12 +68,13 @@ namespace Анкетирование
         public int Pos_X, Pos_Y, Pos_margin;
         public Form parentForm; int Form_width_old, Form_height_old;
         public ArrayList rows; public int lenght_arr;
-
-        public view_table(int x, int y, int margin, Form parentForm)
+        bool satndart = true;
+        public view_table(int x, int y, int margin, Form parentForm, bool satndart = true)
         {
             rows = new ArrayList(); lenght_arr = 0;
             Pos_X = x; Pos_Y = y; Pos_margin = margin;
             this.parentForm = parentForm; Form_width_old = parentForm.Width; Form_height_old = parentForm.Height;
+            this.satndart = satndart;
         }
 
         public void add_cortege(view_plus_data obj)

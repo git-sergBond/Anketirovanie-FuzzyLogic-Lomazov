@@ -74,7 +74,7 @@ namespace Анкетирование
 
         void load_test(int id, view_table table)
         {//загрузить тест
-            SQLiteConnection DB = new SQLiteConnection("Data Source=TestDB — копия.db");
+            SQLiteConnection DB = new SQLiteConnection(port_db_helper.dbName);
             DB.Open();
             string id_test = id.ToString();
             SQLiteCommand CMD = DB.CreateCommand();

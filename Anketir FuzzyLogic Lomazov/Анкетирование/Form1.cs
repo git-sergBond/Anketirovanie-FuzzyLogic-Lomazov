@@ -50,7 +50,7 @@ namespace Анкетирование
 
         private void btn_vivod(object sender, EventArgs e)
         {
-
+            new Conf_rules().Show();
         }
 
         private void btn_defazification(object sender, EventArgs e)

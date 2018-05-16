@@ -81,6 +81,12 @@
     <Compile Include="Conf_questions.Designer.cs">
       <DependentUpon>Conf_questions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conf_rules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conf_rules.Designer.cs">
+      <DependentUpon>Conf_rules.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expert2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Conf_questions.resx">
       <DependentUpon>Conf_questions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Conf_rules.resx">
+      <DependentUpon>Conf_rules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expert2.resx" />
     <EmbeddedResource Include="Form1.resx">
