@@ -142,8 +142,8 @@ namespace Анкетирование
                 "INSERT INTO conf_rules " +
                 "(`id_test`, `conclusion`, `kof_low`, `kof_high`, `id_type`, `id_A`, `id_A_val`, `id_B`, `id_B_val`, `id_C`, `id_C_val`)" +
                 "VALUES ( "
-                + id_test+ ", "+
-                " '" +conclusion + "', " +
+                + id_test + ", " +
+                " '" + conclusion + "', " +
                 kof_low.ToString().Replace(",", ".") + "," + kof_high.ToString().Replace(",", ".") + "," +
                 id_type + "," +
                 id_A + "," + id_A_val + "," +
@@ -168,16 +168,16 @@ namespace Анкетирование
             CMD = DB.CreateCommand();
             CMD.CommandText = "UPDATE conf_rules SET" +
                 " conclusion= '" + conclusion + "'" +
-                ", kof_low = " + kof_low.ToString().Replace(",", ".")+
+                ", kof_low = " + kof_low.ToString().Replace(",", ".") +
                 ", kof_high = " + kof_high.ToString().Replace(",", ".") +
-                ", id_type = "+ id_type + 
-                ", id_A = "+ id_A + 
-                ", id_A_val = "+ id_A_val + 
-                ", id_B = "+ id_B +
-                ", id_B_val = "+ id_B_val + 
-                ", id_C = "+ id_C +
-                ", id_C_val = "+ id_C_val+
-                " WHERE id = "+id;
+                ", id_type = " + id_type +
+                ", id_A = " + id_A +
+                ", id_A_val = " + id_A_val +
+                ", id_B = " + id_B +
+                ", id_B_val = " + id_B_val +
+                ", id_C = " + id_C +
+                ", id_C_val = " + id_C_val +
+                " WHERE id = " + id;
             DB.Open();
             CMD.ExecuteNonQuery();
             DB.Close();
@@ -196,6 +196,65 @@ namespace Анкетирование
             DB.Open();
             CMD.ExecuteNonQuery();
             DB.Close();
+        }
+        //+++++++++++++++++++++++++++++++++Sociolog1
+        public static int get_count_answed_on_question(int id_quest)
+        {
+            /*
+           Int32 count2 = -1;
+
+           SQLiteConnection DB3 = new SQLiteConnection(port_db_helper.dbName);
+           DB3.Open();
+
+           SQLiteCommand CMD3 = DB3.CreateCommand();
+           CMD3.CommandText = ("select count(*) from res_testing, questions where questions.id_test =  '" + txt_id_test.Text + "'  AND res_testing.id_question = questions.id AND answer = '1'");
+           try { count2 = (Int32)CMD3.ExecuteScalar(); }
+           catch { MessageBox.Show("warning count2"); }
+           finally
+           {
+               DB3.Close();
+           }
+           if (count2 == -1) return;
+           */
+
+
+            Int32 cnt = -1;
+
+            SQLiteConnection DB3 = new SQLiteConnection(port_db_helper.dbName);
+            DB3.Open();
+
+            SQLiteCommand CMD3 = DB3.CreateCommand();
+            CMD3.CommandText = "select count(*) from res_testing where res_testing.id_question = " + id_quest;
+            cnt = Int32.Parse(CMD3.ExecuteScalar().ToString());
+            DB3.Close();
+           // MessageBox.Show("ALL "+cnt.ToString());
+            return cnt;
+        }
+        public static int get_count_answed_yes( int id_quest)
+        {
+            Int32 cnt = -1;
+
+            SQLiteConnection DB3 = new SQLiteConnection(port_db_helper.dbName);
+            DB3.Open();
+
+            SQLiteCommand CMD3 = DB3.CreateCommand();
+            CMD3.CommandText = "select count(*) from res_testing where res_testing.id_question = " + id_quest + " AND  answer = 1";
+            cnt = Int32.Parse(CMD3.ExecuteScalar().ToString());
+            DB3.Close();
+           // MessageBox.Show("YES "+cnt.ToString());
+            return cnt;
+        }
+        public static double  get_avg_answed_2_to_5(int id_quest)
+        {
+            double avg = -1;
+            SQLiteConnection DB3 = new SQLiteConnection(port_db_helper.dbName);
+            DB3.Open();
+
+            SQLiteCommand CMD3 = DB3.CreateCommand();
+            CMD3.CommandText = "select  AVG(answer) from res_testing where res_testing.id_question = " + id_quest;
+            avg = Double.Parse(CMD3.ExecuteScalar().ToString());
+            DB3.Close();
+            return avg;
         }
     }
 }

@@ -40,7 +40,8 @@ namespace Анкетирование
 
         private void btn_sociolog(object sender, EventArgs e)
         {
-
+            Form ptr = new Sociolog1();
+            ptr.Show();
         }
 
         private void btn_konfig(object sender, EventArgs e)

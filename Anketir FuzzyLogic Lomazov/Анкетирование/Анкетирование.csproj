@@ -87,6 +87,12 @@
     <Compile Include="Conf_rules.Designer.cs">
       <DependentUpon>Conf_rules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sociolog1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sociolog1.designer.cs">
+      <DependentUpon>Sociolog1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expert2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Conf_rules.resx">
       <DependentUpon>Conf_rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sociolog1.resx">
+      <DependentUpon>Sociolog1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expert2.resx" />
     <EmbeddedResource Include="Form1.resx">

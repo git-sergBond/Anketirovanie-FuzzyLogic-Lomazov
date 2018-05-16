@@ -31,5 +31,7 @@ namespace Анкетирование
         {
             init_bank_anket();
         }
+        //------------------------Sociolog
+        public static view_table na_formu_defaz = null;
     }
 }

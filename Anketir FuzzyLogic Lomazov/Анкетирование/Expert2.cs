@@ -157,7 +157,7 @@ namespace Анкетирование
 
             foreach (question_plus_typeQuest row in table_1.rows)
             {
-                str = ("update rules set a ='" + row.a.Text.ToString() + "', b ='" + row.b.Text.ToString() + "',  c ='" + row.c.Text.ToString() + "', d ='" + row.d.Text.ToString() + "', e ='" + row.e.Text.ToString() + "', f ='" + row.f.Text.ToString() + "',   g ='" + row.g.Text.ToString() + "', h ='" + row.h.Text.ToString() + "' WHERE id='" + row.id_rules + "'");
+                str = ("update rules set a ='" + row.a.Text.ToString() + "', b ='" + row.b.Text.ToString() + "',  c ='" + row.c.Text.ToString() + "', d ='" + row.d.Text.ToString() + "', e ='" + row.e.Text.ToString() + "', f ='" + row.f.Text.ToString() + "',   g ='" + row.g.Text.ToString() + "', h ='" + row.h.Text.ToString() + "', f1 ='" + row.f1.Text.ToString() + "', f2 ='" + row.f2.Text.ToString() + "',  f3 ='" + row.f3.Text.ToString() + "', f4 ='" + row.f4.Text.ToString() + "', f5 ='" + row.f5.Text.ToString() + "', f6 ='" + row.f6.Text.ToString() + "',   f7 ='" + row.f7.Text.ToString() + "', f8 ='" + row.f8.Text.ToString() + "'  WHERE id='" + row.id_rules + "'");
 
                 row.a.Text.ToString();
                 row.b.Text.ToString();
