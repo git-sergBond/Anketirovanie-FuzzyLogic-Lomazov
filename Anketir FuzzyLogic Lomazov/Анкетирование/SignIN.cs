@@ -80,5 +80,19 @@ namespace Анкетирование
         {
 
         }
+
+        private void bt_no_logandpass_Click(object sender, EventArgs e)
+        {
+            label3.Visible = true;
+            label4.Visible = true;
+            label7.Visible = true;
+            label8.Visible = true;
+            label9.Visible = true;
+            label10.Visible = true;
+            reg_bt.Visible = true;
+            txt_group.Visible = true;
+            txt_id_type_person.Visible = true;
+
+        }
     }
 }

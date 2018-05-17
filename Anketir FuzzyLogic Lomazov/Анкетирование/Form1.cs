@@ -56,7 +56,7 @@ namespace Анкетирование
 
         private void btn_defazification(object sender, EventArgs e)
         {
-
+            new Defazingcs().Show();
         }
     }
 }

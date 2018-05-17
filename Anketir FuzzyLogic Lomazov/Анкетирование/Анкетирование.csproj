@@ -87,6 +87,12 @@
     <Compile Include="Conf_rules2.Designer.cs">
       <DependentUpon>Conf_rules2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Defazingcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Defazingcs.Designer.cs">
+      <DependentUpon>Defazingcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Expert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Conf_rules2.resx">
       <DependentUpon>Conf_rules2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defazingcs.resx">
+      <DependentUpon>Defazingcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Expert.resx">
       <DependentUpon>Expert.cs</DependentUpon>
