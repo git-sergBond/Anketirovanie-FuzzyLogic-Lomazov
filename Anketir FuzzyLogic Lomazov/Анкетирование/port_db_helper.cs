@@ -155,9 +155,9 @@ namespace Анкетирование
             DB.Close();
         }
         public static void update_rule(
-            int id,
+            int id, int num_rule,
             string conclusion,
-            double kof_low, double kof_high,
+            double kof, int type_kof,
             int id_type,
             int id_A, int id_A_val,
             int id_B, int id_B_val,
@@ -168,8 +168,9 @@ namespace Анкетирование
             CMD = DB.CreateCommand();
             CMD.CommandText = "UPDATE conf_rules SET" +
                 " conclusion= '" + conclusion + "'" +
-                ", kof_low = " + kof_low.ToString().Replace(",", ".") +
-                ", kof_high = " + kof_high.ToString().Replace(",", ".") +
+                ", kof = " + kof.ToString().Replace(",", ".") +
+                ", type_kof = " + type_kof +
+                ", num_rule = " + num_rule +
                 ", id_type = " + id_type +
                 ", id_A = " + id_A +
                 ", id_A_val = " + id_A_val +

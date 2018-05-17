@@ -157,7 +157,7 @@
             this.MaximumSize = new System.Drawing.Size(9999, 9999);
             this.MinimumSize = new System.Drawing.Size(16, 39);
             this.Name = "Sociolog1";
-            this.Text = "Expert";
+            this.Text = "Sociolog";
             this.ResumeLayout(false);
             this.PerformLayout();
 

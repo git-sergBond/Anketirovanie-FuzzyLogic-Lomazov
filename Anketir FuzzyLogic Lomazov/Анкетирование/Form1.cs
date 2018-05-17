@@ -35,7 +35,7 @@ namespace Анкетирование
 
         private void btn_expert(object sender, EventArgs e)
         {
-            new Expert2().Show();
+            new Expert().Show();
         }
 
         private void btn_sociolog(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace Анкетирование
 
         private void btn_vivod(object sender, EventArgs e)
         {
-            new Conf_rules().Show();
+            new Conf_rules2().Show();
         }
 
         private void btn_defazification(object sender, EventArgs e)

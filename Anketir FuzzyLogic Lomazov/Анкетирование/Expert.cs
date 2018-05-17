@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Анкетирование
 {
-    public partial class Expert2 : Form
+    public partial class Expert : Form
     {
 
         int ID_TEST;
@@ -80,7 +80,7 @@ namespace Анкетирование
 
         view_table table_1;
 
-        public Expert2()
+        public Expert()
         {
             InitializeComponent();
             table_1 = new view_table(16, 25, 30, this);
@@ -182,9 +182,9 @@ namespace Анкетирование
                 connection.Close();
                 MessageBox.Show(str);
             }
+
+
         }
-
-
     }
 }
 
