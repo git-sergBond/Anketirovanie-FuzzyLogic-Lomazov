@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgMamdani.cs" />
     <Compile Include="anketa.cs" />
     <Compile Include="Anketirovanie.cs">
       <SubType>Form</SubType>
