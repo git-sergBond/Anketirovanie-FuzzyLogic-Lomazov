@@ -40,6 +40,7 @@ namespace Анкетирование
             TextBox name_rule;
             TextBox power_istinnosti;
             TextBox activisacia_txt;
+            Control procent_defazific = null;
             /*-----------------
              * DATA
              */
@@ -52,7 +53,7 @@ namespace Анкетирование
              */
             double stepen_istinnosti = -1, activisatia = -1;
 
-            public pod_zacuchenie(SQLiteDataReader reader)
+            public pod_zacuchenie(SQLiteDataReader reader, int kostl_dla_out_znacheni)
             {
                 string[] tmp = new string[] { "Высокий", "Средний" , "Низкий"};
                 Label capt1 = new Label { Text = tmp[Int32.Parse(reader["type_kof"].ToString())-1] , Width = 50 };
@@ -66,6 +67,13 @@ namespace Анкетирование
                 //активизация
                 activisacia_txt = new TextBox { Width = 50 };
                 this.cols.Add(activisacia_txt);
+
+                if (kostl_dla_out_znacheni % 3 == 0)
+                {
+                    procent_defazific = new TextBox() { Width = 50 };
+                    this.cols.Add(procent_defazific);
+                }
+
                 /*-----------------
                  * DATA
                  */
@@ -78,9 +86,9 @@ namespace Анкетирование
                 id_B_val = Int32.Parse(reader["id_B_val"].ToString());
                 id_C_val = Int32.Parse(reader["id_C_val"].ToString());
                 /*-----------------
-                 * * OUT
+                 * * OUT //РАСЧЕТ ВЫВОДОВ
                  */
-                double A=-1, B=-1, C=-1;//считы с социолога по правилу сред низ выс
+                double A =-1, B=-1, C=-1;//считы с социолога по правилу сред низ выс
                 A = getFromSociologTable_B_i(id_A, id_A_val);
                 B = getFromSociologTable_B_i(id_B, id_B_val);
                 C = getFromSociologTable_B_i(id_C, id_C_val);
@@ -95,7 +103,6 @@ namespace Анкетирование
                 activisatia = stepen_istinnosti * kof;
                 power_istinnosti.Text = stepen_istinnosti.ToString();
                 activisacia_txt.Text = activisatia.ToString();
-
             }
         }
 
@@ -113,7 +120,7 @@ namespace Анкетирование
         public Defazingcs()
         {
             InitializeComponent();
-            table_1 = new view_table(30, 100, 30, this);
+            table_1 = new view_table(30, 100, 40, this);
         }
 
 
@@ -142,66 +149,34 @@ namespace Анкетирование
             DB.Open();
             SQLiteDataReader reader =  CMD.ExecuteReader();
 
+            //РАСЧЕТ ВЫВОДОВ
+            int i = 1;
             while (reader.Read())
             { 
-                table_1.add_cortege(new pod_zacuchenie(reader));
+                table_1.add_cortege(new pod_zacuchenie(reader, i));
+                i++;
             }
-
             DB.Close();
             table_1.redraw_on_form();
+
+            //РАСЧЕТ ДЕФАЗИФИКАЦИЯ
+            //def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN * 2 + akkS * 4 + akkS * 2);
+            //textBox5.Text = Convert.ToString(String.Format("{0:0.0}", def));
 
         }
 
         private void btn_confirm_Click(object sender, EventArgs e)
-        {//ВЫВОДЫ
+        {
             ID_TEST = Int32.Parse(this.txt_id_test.Text.ToString());
             upadate();
             my_global.na_formu_defaz = table_1;
 
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {//ДЕФАЗИФИКАЦИЯ
-            this.label1.Text = "Варианты решений: ";
-            this.label3.Visible = true;
-            this.label4.Visible = true;
-
-            double aa, bb, cc, dd, ee, ff, gg, hh;
-            int id_rules;
-            double def, akkN, akkS, akkV;
-            SQLiteConnection DB = new SQLiteConnection(port_db_helper.dbName);
-            DB.Open();
-
-            SQLiteCommand CMD = DB.CreateCommand();
-            CMD.CommandText = "SELECT * FROM conf_rules, rules, questions WHERE  conf_rules.id_test = " + textBox1.Text;
-            SQLiteDataReader reader = CMD.ExecuteReader();
-
-
-            if (reader == null) return;
-
-            while (reader.Read())
-            {
-                id_rules = Int32.Parse(reader["id"].ToString());
-                aa = Double.Parse(reader["a"].ToString());
-                bb = Double.Parse(reader["b"].ToString());
-                cc = Double.Parse(reader["c"].ToString());
-                dd = Double.Parse(reader["d"].ToString());
-                ee = Double.Parse(reader["e"].ToString());
-                ff = Double.Parse(reader["f"].ToString());
-                gg = Double.Parse(reader["g"].ToString());
-                hh = Double.Parse(reader["h"].ToString());
-
-                akkN = Convert.ToDouble(textBox2.Text.ToString());
-                akkS = Convert.ToDouble(textBox3.Text.ToString());
-                akkV = Convert.ToDouble(textBox4.Text.ToString());
-
-                def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN*2+akkS*4+akkS*2);
-                textBox5.Text = Convert.ToString(String.Format("{0:0.0}", def));
-                //
-
-
-            }
-        }
     }
 }
