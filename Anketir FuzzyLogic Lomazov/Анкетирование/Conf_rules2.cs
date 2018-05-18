@@ -22,7 +22,14 @@ namespace Анкетирование
         //немного говнокода <----------
         /* эти значения должны подгружаться из type_rules и type_val_ABC в БД,
          * но тк время поджимает и так сойдет) */
-        static List<String> type_rules = new List<string> { "A & B & C", "A & B || C", "A || B & C", "A || B || C", "A & B", "A || B" };
+        public static List<String> type_rules = new List<string> {
+            "A & B & C",//1
+            "A & B || C",//2
+            "A || B & C",//3
+            "A || B || C",//4
+            "A & B",//5
+            "A || B"//6
+        };
         static List<String> type_val_ABC = new List<string> { "низкий", "средний", "высокий" };
         static List<String> name_rules;
         static void fill_comboBox(ComboBox box, List<string> lines, int selected)

@@ -55,9 +55,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.id_A_val_LOW = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.conclusion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.id_type_MEDIUM = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,6 +71,7 @@
             this.id_C_MEDIUM = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.id_A_val_MEDIUM = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.id_type_HIGH = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -90,6 +88,8 @@
             this.id_C_HIGH = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.id_A_val_HIGH = new System.Windows.Forms.ComboBox();
+            this.conclusion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.save_rule = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.num_rule.SuspendLayout();
@@ -378,48 +378,6 @@
             this.tabPage2.Text = "СРЕДНИЙ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.id_type_HIGH);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.id_B_val_HIGH);
-            this.tabPage3.Controls.Add(this.kof_HIGH);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.id_C_val_HIGH);
-            this.tabPage3.Controls.Add(this.id_A_HIGH);
-            this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.id_B_HIGH);
-            this.tabPage3.Controls.Add(this.id_C_HIGH);
-            this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Controls.Add(this.id_A_val_HIGH);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(637, 229);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "ВЫСОКИЙ";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // conclusion
-            // 
-            this.conclusion.Location = new System.Drawing.Point(264, 31);
-            this.conclusion.Name = "conclusion";
-            this.conclusion.Size = new System.Drawing.Size(407, 22);
-            this.conclusion.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Варианты принимаемых решений";
-            // 
             // id_type_MEDIUM
             // 
             this.id_type_MEDIUM.FormattingEnabled = true;
@@ -554,6 +512,32 @@
             this.id_A_val_MEDIUM.Name = "id_A_val_MEDIUM";
             this.id_A_val_MEDIUM.Size = new System.Drawing.Size(121, 24);
             this.id_A_val_MEDIUM.TabIndex = 44;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.id_type_HIGH);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.id_B_val_HIGH);
+            this.tabPage3.Controls.Add(this.kof_HIGH);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.id_C_val_HIGH);
+            this.tabPage3.Controls.Add(this.id_A_HIGH);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.id_B_HIGH);
+            this.tabPage3.Controls.Add(this.id_C_HIGH);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.id_A_val_HIGH);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(637, 229);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "ВЫСОКИЙ";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // id_type_HIGH
             // 
@@ -690,6 +674,22 @@
             this.id_A_val_HIGH.Size = new System.Drawing.Size(121, 24);
             this.id_A_val_HIGH.TabIndex = 60;
             // 
+            // conclusion
+            // 
+            this.conclusion.Location = new System.Drawing.Point(264, 31);
+            this.conclusion.Name = "conclusion";
+            this.conclusion.Size = new System.Drawing.Size(407, 22);
+            this.conclusion.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(231, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Варианты принимаемых решений";
+            // 
             // save_rule
             // 
             this.save_rule.Location = new System.Drawing.Point(313, 486);
@@ -704,7 +704,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 579);
+            this.ClientSize = new System.Drawing.Size(781, 578);
             this.Controls.Add(this.save_rule);
             this.Controls.Add(this.num_rule);
             this.Controls.Add(this.button2);

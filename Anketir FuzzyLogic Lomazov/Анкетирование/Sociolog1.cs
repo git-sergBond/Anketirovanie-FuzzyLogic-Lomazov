@@ -161,13 +161,15 @@ namespace Анкетирование
             public double suhu, s_rendah = 0, s_sedang = 0, s_tinggi = 0, aa, bb, cc, dd, ee, ff, gg, hh, f1, f2, f3, f4, f5, f6, f7, f8, answer1, answer0, sum, number, prosent, summ;
             public double f_v, f_s, f_n, itog_n, itog_s, itog_v;
             public double f_vyvod;
+            public double f_vys;
+            public double f_sred;
+            public double f_niz;
 
 
 
-
-            public TextBox f_vys;
-            public TextBox f_sred;
-            public TextBox f_niz;
+            public TextBox f_vys_txt;
+            public TextBox f_sred_txt;
+            public TextBox f_niz_txt;
             public TextBox itog_niz;
             public TextBox itog_sred;
             public TextBox itog_vys;
@@ -341,8 +343,9 @@ namespace Анкетирование
                 {
                     f_vyvod = f8;
                 }
-                f_niz = new TextBox() { Text = f_vyvod.ToString(), Width = 20 };
-                this.cols.Add(f_niz);
+                f_niz = f_vyvod;
+                f_niz_txt = new TextBox() { Text = f_niz.ToString(), Width = 20 };
+                this.cols.Add(f_niz_txt);
 
 
 
@@ -381,9 +384,9 @@ namespace Анкетирование
                 {
                     f_vyvod = f8;
                 }
-
-                f_sred = new TextBox() { Text = f_vyvod.ToString(), Width = 20 };
-                this.cols.Add(f_sred);
+                f_sred = f_vyvod;
+                f_sred_txt = new TextBox() { Text = f_sred.ToString(), Width = 20 };
+                this.cols.Add(f_sred_txt);
 
 
 
@@ -425,8 +428,9 @@ namespace Анкетирование
                 {
                     f_vyvod = f8;
                 }
-                f_vys = new TextBox() { Text = f_vyvod.ToString(), Width = 20 };
-                this.cols.Add(f_vys);
+                f_vys = f_vyvod;
+                f_vys_txt = new TextBox() { Text = f_vys.ToString(), Width = 20 };
+                this.cols.Add(f_vys_txt);
 
 
 
