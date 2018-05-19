@@ -161,7 +161,8 @@ namespace Анкетирование
             int id_type,
             int id_A, int id_A_val,
             int id_B, int id_B_val,
-            int id_C, int id_C_val)
+            int id_C, int id_C_val,
+            double a, double b, double c, double d, double e, double f, double g, double h)
         {
             SQLiteConnection DB = new SQLiteConnection(dbName);
             SQLiteCommand CMD = DB.CreateCommand();
@@ -178,6 +179,14 @@ namespace Анкетирование
                 ", id_B_val = " + id_B_val +
                 ", id_C = " + id_C +
                 ", id_C_val = " + id_C_val +
+                ", a = " + a +
+                ", b = " + b +
+                ", c = " + c +
+                ", d = " + d +
+                ", e = " + e +
+                ", f = " + f +
+                ", g = " + g +
+                ", h = " + h +
                 " WHERE id = " + id;
             DB.Open();
             CMD.ExecuteNonQuery();

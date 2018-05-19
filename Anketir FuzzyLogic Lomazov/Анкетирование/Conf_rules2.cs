@@ -56,6 +56,8 @@ namespace Анкетирование
             
 
             public string conclusion;
+            public double aa, bb, cc, dd, ee, ff, gg, hh;
+
 
             public List<Power_rule> high_medium_low = null;
 
@@ -121,6 +123,16 @@ namespace Анкетирование
                 fill_comboBox(f.id_A_val_HIGH, type_val_ABC, e.id_A_val);
                 fill_comboBox(f.id_B_val_HIGH, type_val_ABC, e.id_B_val);
                 fill_comboBox(f.id_C_val_HIGH, type_val_ABC, e.id_C_val);
+
+
+                f.a_txt.Text = aa.ToString();
+                f.b_txt.Text = bb.ToString();
+                f.c_txt.Text = cc.ToString();
+                f.d_txt.Text = dd.ToString();
+                f.e_txt.Text = ee.ToString();
+                f.f_txt.Text = ff.ToString();
+                f.g_txt.Text = gg.ToString();
+                f.h_txt.Text = hh.ToString();
             }
 
             public void load_changed_data_from_view(Conf_rules2 f)
@@ -158,6 +170,15 @@ namespace Анкетирование
                 e.id_B_val = f.id_B_val_HIGH.SelectedIndex + 1;
                 e.id_C_val = f.id_C_val_HIGH.SelectedIndex + 1;
 
+                aa = double.Parse(f.a_txt.Text.ToString());
+                bb = double.Parse(f.b_txt.Text.ToString());
+                cc = double.Parse(f.c_txt.Text.ToString());
+                dd = double.Parse(f.d_txt.Text.ToString());
+                ee = double.Parse(f.e_txt.Text.ToString());
+                ff = double.Parse(f.f_txt.Text.ToString());
+                gg = double.Parse(f.g_txt.Text.ToString());
+                hh = double.Parse(f.h_txt.Text.ToString());
+                MessageBox.Show(aa.ToString());
             }
 
         }
@@ -181,6 +202,14 @@ namespace Анкетирование
             while (reader.Read())
             {
                 rules.Add(new Rule_model());
+                rules[i].aa = Double.Parse(reader["a"].ToString());
+                rules[i].bb = Double.Parse(reader["b"].ToString());
+                rules[i].cc = Double.Parse(reader["c"].ToString());
+                rules[i].dd = Double.Parse(reader["d"].ToString());
+                rules[i].ee = Double.Parse(reader["e"].ToString());
+                rules[i].ff = Double.Parse(reader["f"].ToString());
+                rules[i].gg = Double.Parse(reader["g"].ToString());
+                rules[i].hh = Double.Parse(reader["h"].ToString());
                 rules[i].load_high_medium_low(Int32.Parse(reader["type_kof"].ToString())-1, reader);
                 j++;
                 if(j > MAX_CNT_RULES)
@@ -211,8 +240,8 @@ namespace Анкетирование
             foreach (Rule_model model in rules)
             {
                 foreach(Rule_model.Power_rule pod_model in model.high_medium_low)
-                {
-                    port_db_helper.update_rule(pod_model.id,pod_model.num_rule,model.conclusion,pod_model.kof,pod_model.type_kof,pod_model.id_type,pod_model.id_A,pod_model.id_A_val, pod_model.id_B, pod_model.id_B_val, pod_model.id_C, pod_model.id_C_val);
+                {MessageBox.Show(model.aa.ToString());
+                    port_db_helper.update_rule(pod_model.id,pod_model.num_rule,model.conclusion,pod_model.kof,pod_model.type_kof,pod_model.id_type,pod_model.id_A,pod_model.id_A_val, pod_model.id_B, pod_model.id_B_val, pod_model.id_C, pod_model.id_C_val, model.aa, model.bb, model.cc, model.dd, model.ee, model.ff, model.gg, model.hh);
                 }
             }
         }

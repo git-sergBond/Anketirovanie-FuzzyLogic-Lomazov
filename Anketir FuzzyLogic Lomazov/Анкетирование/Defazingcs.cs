@@ -19,6 +19,8 @@ namespace Анкетирование
         //      ::ПРЕДСТАВЛЕНИЕ И ПРИВЯЗКА ДАННЫХ::
         //      ::-------------------------------::
 
+        static List<pod_zacuchenie> rezultat = new List<pod_zacuchenie>();//хранится процент дефазификаии
+
         static double getFromSociologTable_B_i(int i/*Номер вопроса(строки)*/, int j/*выбор из {низкий|средний|высокий} кофициент (столбец)*/)
         {//берет данные о расчитанном значении Bi с формы Социолога
             double Bi = -1;
@@ -40,18 +42,19 @@ namespace Анкетирование
             TextBox name_rule;
             TextBox power_istinnosti;
             TextBox activisacia_txt;
-            Control procent_defazific = null;
+            public TextBox procent_defazific = null;
             /*-----------------
              * DATA
              */
             int id_type = -1,
                 id_A = -1, id_B = -1, id_C = -1,
                 id_A_val = -1, id_B_val = -1, id_C_val = -1;
-            double kof = -1;  
+            double kof = -1, aa, bb, cc, dd, ee, ff, gg, hh;  
             /*-----------------
              * OUT
              */
             double stepen_istinnosti = -1, activisatia = -1;
+            public double def = -1;
 
             public pod_zacuchenie(SQLiteDataReader reader, int kostl_dla_out_znacheni)
             {
@@ -70,8 +73,10 @@ namespace Анкетирование
 
                 if (kostl_dla_out_znacheni % 3 == 0)
                 {
+
                     procent_defazific = new TextBox() { Width = 50 };
                     this.cols.Add(procent_defazific);
+                    rezultat.Add(this);
                 }
 
                 /*-----------------
@@ -85,6 +90,14 @@ namespace Анкетирование
                 id_A_val = Int32.Parse(reader["id_A_val"].ToString());
                 id_B_val = Int32.Parse(reader["id_B_val"].ToString());
                 id_C_val = Int32.Parse(reader["id_C_val"].ToString());
+                aa = Double.Parse(reader["a"].ToString());
+                bb = Double.Parse(reader["b"].ToString());
+                cc = Double.Parse(reader["c"].ToString());
+                dd = Double.Parse(reader["d"].ToString());
+                ee = Double.Parse(reader["e"].ToString());
+                ff = Double.Parse(reader["f"].ToString());
+                gg = Double.Parse(reader["g"].ToString());
+                hh = Double.Parse(reader["h"].ToString());
                 /*-----------------
                  * * OUT //РАСЧЕТ ВЫВОДОВ
                  */
@@ -103,6 +116,25 @@ namespace Анкетирование
                 activisatia = stepen_istinnosti * kof;
                 power_istinnosti.Text = stepen_istinnosti.ToString();
                 activisacia_txt.Text = activisatia.ToString();
+
+
+
+                //РАСЧЕТ ДЕФАЗИФИКАЦИЯ
+                if (kostl_dla_out_znacheni % 3 == 0)
+                {
+                    double akkN = -1, akkS = -1, akkV = -1;
+
+                    //ТУТ НУЖНО ИСПРАВИТЬ ОШИБКУ КОГДА НЕ СОВПАДАЕТ НУМЕРАЦИЯ И НИЗ И  СРЕДНИЙ
+                    akkN = rezultat[0].activisatia;
+                    akkS = rezultat[1].activisatia;
+                    akkV = rezultat[2].activisatia;
+
+                    def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN * 2 + akkS * 4 + akkS * 2);
+                    procent_defazific.Text = Convert.ToString(String.Format("{0:0.0}", def)) +"%";
+                }
+
+
+
             }
         }
 
@@ -152,17 +184,19 @@ namespace Анкетирование
             //РАСЧЕТ ВЫВОДОВ
             int i = 1;
             while (reader.Read())
-            { 
-                table_1.add_cortege(new pod_zacuchenie(reader, i));
+            {
+                pod_zacuchenie p = new pod_zacuchenie(reader, i);
+                rezultat.Add(p);
+                table_1.add_cortege(p);
+                if (i == 3) {
+                    i = 1;
+                    rezultat = new List<pod_zacuchenie>();
+                    continue;
+                }
                 i++;
             }
             DB.Close();
             table_1.redraw_on_form();
-
-            //РАСЧЕТ ДЕФАЗИФИКАЦИЯ
-            //def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN * 2 + akkS * 4 + akkS * 2);
-            //textBox5.Text = Convert.ToString(String.Format("{0:0.0}", def));
-
         }
 
         private void btn_confirm_Click(object sender, EventArgs e)
