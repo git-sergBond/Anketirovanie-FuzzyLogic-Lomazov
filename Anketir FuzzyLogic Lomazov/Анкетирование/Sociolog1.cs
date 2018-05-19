@@ -166,7 +166,6 @@ namespace Анкетирование
             public double f_niz;
 
 
-
             public TextBox f_vys_txt;
             public TextBox f_sred_txt;
             public TextBox f_niz_txt;
@@ -219,7 +218,6 @@ namespace Анкетирование
 
 
 
-
                 itog_niz = make_txt(itog_n);
                 itog_sred = make_txt(itog_s);
                 itog_vys = make_txt(itog_v);
@@ -248,22 +246,12 @@ namespace Анкетирование
 
                 //низкий
                 // suhu = proc_or_avrg; ---------------> (0)
-                if (suhu < aa)
-                {
-                    s_rendah = 1;
-                }
-                if (suhu >= aa && suhu <= cc)
-                {
-                    s_rendah = (cc - suhu) / (cc - aa);
-                }
-
-                if (suhu > cc)
-                {
-                    s_rendah = 0;
-                }
-
+                if (suhu < aa) s_rendah = 1;
+                else if (suhu >= aa && suhu <= cc) s_rendah = (cc - suhu) / (cc - aa);
+                else if (suhu > cc) s_rendah = 0;
+                f_niz = s_rendah;
                 itog_niz.Text = String.Format("{0:0.0}", s_rendah);
-
+                
                 // средний 1
 
 
@@ -287,6 +275,7 @@ namespace Анкетирование
                 {
                     s_sedang = 0;
                 }
+                f_sred = s_sedang;
                 itog_sred.Text = String.Format("{0:0.0}", s_sedang);
 
 
@@ -305,10 +294,11 @@ namespace Анкетирование
                 {
                     s_tinggi = 1;
                 }
+                f_vys = s_tinggi;
                 itog_vys.Text = String.Format("{0:0.0}", s_tinggi);
 
 
-
+                /*
 
                 // B(i) низкий
                 if (s_rendah >= 0)
@@ -432,7 +422,7 @@ namespace Анкетирование
                 f_vys_txt = new TextBox() { Text = f_vys.ToString(), Width = 20 };
                 this.cols.Add(f_vys_txt);
 
-
+                */
 
 
 
@@ -507,13 +497,13 @@ namespace Анкетирование
             this.lbl_id_test.Text = "Вопрос: ";
             this.txt_id_test.Visible = false;
             this.btn_confirm.Visible = false;
-            this.label1.Visible = true;
+
             this.label3.Visible = true;
-            this.label23.Visible = true;
+    
             this.label5.Visible = true;
             this.label85.Visible = true;
             this.label4.Visible = true;
-            this.label2.Visible = true;
+
         }
     }
 

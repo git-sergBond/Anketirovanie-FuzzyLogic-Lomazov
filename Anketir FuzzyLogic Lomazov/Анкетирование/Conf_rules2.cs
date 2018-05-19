@@ -34,6 +34,7 @@ namespace Анкетирование
         static List<String> name_rules;
         static void fill_comboBox(ComboBox box, List<string> lines, int selected)
         {
+            box.Items.Clear();
             foreach (string line in lines)
                 box.Items.Add(line);
             box.SelectedIndex = selected - 1;
@@ -178,7 +179,6 @@ namespace Анкетирование
                 ff = double.Parse(f.f_txt.Text.ToString());
                 gg = double.Parse(f.g_txt.Text.ToString());
                 hh = double.Parse(f.h_txt.Text.ToString());
-                MessageBox.Show(aa.ToString());
             }
 
         }
@@ -228,6 +228,7 @@ namespace Анкетирование
 
         private void button2_Click(object sender, EventArgs e)
         {//СЛЕДУЮЩИЙ
+            rules[cur_rule].load_changed_data_from_view(this);
             if (cur_rule < MAX_CNT_RULES)
                 cur_rule++;
             this.num_rule.Text = "# " + 0 +(cur_rule + 1);
@@ -235,12 +236,12 @@ namespace Анкетирование
         }
 
         private void btn_save_all_Click(object sender, EventArgs e)
-        {//КНОПКА Созранить все
-
+        {//КНОПКА Сохранить все
+            rules[cur_rule].load_changed_data_from_view(this);
             foreach (Rule_model model in rules)
             {
                 foreach(Rule_model.Power_rule pod_model in model.high_medium_low)
-                {MessageBox.Show(model.aa.ToString());
+                {
                     port_db_helper.update_rule(pod_model.id,pod_model.num_rule,model.conclusion,pod_model.kof,pod_model.type_kof,pod_model.id_type,pod_model.id_A,pod_model.id_A_val, pod_model.id_B, pod_model.id_B_val, pod_model.id_C, pod_model.id_C_val, model.aa, model.bb, model.cc, model.dd, model.ee, model.ff, model.gg, model.hh);
                 }
             }
@@ -248,6 +249,7 @@ namespace Анкетирование
 
         private void button1_Click(object sender, EventArgs e)
         {//ПРЕДЫДУЩИЙ
+            rules[cur_rule].load_changed_data_from_view(this);
             if (cur_rule != 0)
                 cur_rule--;
             this.num_rule.Text = "# " + 0 + (cur_rule + 1);

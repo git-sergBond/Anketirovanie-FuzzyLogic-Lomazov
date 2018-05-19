@@ -32,8 +32,9 @@ namespace Анкетирование
                 counter++;
             } if (get_row == null) return -2;
             if (j == 1) Bi = get_row.f_niz;//низкий
-            if (j == 2) Bi = get_row.f_sred;//средний
-            if (j == 3) Bi = get_row.f_vys;//высокий
+            else if (j == 2) Bi = get_row.f_sred;//средний
+            else if (j == 3) Bi = get_row.f_vys;//высокий
+            else MessageBox.Show("функция getFromSociologTable_B_i");
             return Bi;
         }
 
@@ -109,6 +110,21 @@ namespace Анкетирование
                     case 1:// A & B & C
                         stepen_istinnosti = Math.Min(A, Math.Min(B, C));
                         break;
+                    case 2:// A & B || C
+                        stepen_istinnosti = Math.Min(A, Math.Max(B, C));
+                        break;
+                    case 3://A || B & C
+                        stepen_istinnosti = Math.Min(Math.Max(A, B), C);
+                        break;
+                    case 4://A || B || C
+                        stepen_istinnosti = Math.Max(A, Math.Max(B, C));
+                        break;
+                    case 5://A & B
+                        stepen_istinnosti = Math.Min(A,B);
+                        break;
+                    case 6://A || B
+                        stepen_istinnosti = Math.Max(A, B);
+                        break;
                     default:
                         MessageBox.Show("Данное условие пока не поддерживается Defazing(1)");
                         break;
@@ -130,11 +146,12 @@ namespace Анкетирование
                     akkV = rezultat[2].activisatia;
 
                     def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN * 2 + akkS * 4 + akkS * 2);
+                    if((akkN * 2 + akkS * 4 + akkS * 2) == 0)
+                    {
+                        //MessageBox.Show("Не число /0");
+                    }
                     procent_defazific.Text = Convert.ToString(String.Format("{0:0.0}", def)) +"%";
                 }
-
-
-
             }
         }
 
