@@ -149,7 +149,7 @@ namespace Анкетирование
 {
     public partial class Sociolog1 : Form
     {
-        int ID_TEST;
+        public int ID_TEST;
 
         //      ::-------------------------------::
         //      ::ПРЕДСТАВЛЕНИЕ И ПРИВЯЗКА ДАННЫХ::
@@ -436,7 +436,7 @@ namespace Анкетирование
 
         }
 
-        view_table table_1;
+        public view_table table_1;
 
         public object CMD2 { get; private set; }
 
@@ -455,7 +455,7 @@ namespace Анкетирование
 
 
 
-        void load_test(int id, view_table table)
+        public void load_test(int id, view_table table)
         {//загрузить тест
             SQLiteConnection DB = new SQLiteConnection(port_db_helper.dbName);
             DB.Open();

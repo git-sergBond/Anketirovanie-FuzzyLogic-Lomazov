@@ -124,6 +124,9 @@ namespace Анкетирование
                 CMD.ExecuteNonQuery();
                 DB.Close();
             }
+            MessageBox.Show("Данные занесены в БД");
+            this.Close();
         }
+
     }
 }

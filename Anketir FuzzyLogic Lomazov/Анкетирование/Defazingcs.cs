@@ -181,10 +181,12 @@ namespace Анкетирование
            * ------------------
            * Делаем расчет как у социолога
            * ------------------
-           * Кликаем сначала по социологу!!!
+           * nedofix(Кликаем) сначала по социологу!!!
            */
-
-            table_sociolog = my_global.na_formu_defaz;
+            table_sociolog = new view_table(0,0,0,this);
+            Sociolog1 tmp = new Sociolog1();
+            tmp.ID_TEST = ID_TEST;
+            tmp.load_test(tmp.ID_TEST, table_sociolog);
 
             /*
              * ------------------
