@@ -198,15 +198,18 @@ namespace Анкетирование
 
                 if (percent != -1)
                 {
-                    proc_or_avrg = new TextBox() { Text = percent.ToString() + "%", Width = 30 };
+                   
+                    proc_or_avrg = new TextBox() { Text = percent.ToString() +'%' , Width = 30 };
+                
                     this.cols.Add(proc_or_avrg);
                     suhu = percent;//<--(0)
                 }
                 if (avg != -1)
                 {
-                    proc_or_avrg = new TextBox() { Text = avg.ToString(), Width = 30 };
+                    proc_or_avrg = new TextBox() { Text =  avg.ToString(), Width = 30 };
+                
                     this.cols.Add(proc_or_avrg);//<--(0)
-                    suhu = avg;
+                    suhu =  avg;
                 }
 
 
@@ -247,8 +250,8 @@ namespace Анкетирование
                 //низкий
                 // suhu = proc_or_avrg; ---------------> (0)
                 if (suhu < aa) s_rendah = 1;
-                else if (suhu >= aa && suhu <= cc) s_rendah = (cc - suhu) / (cc - aa);
-                else if (suhu > cc) s_rendah = 0;
+                if (suhu >= aa && suhu <= dd) s_rendah = (dd - suhu) / (dd - aa);
+                if (suhu > aa) s_rendah = 0;
                 f_niz = s_rendah;
                 itog_niz.Text = String.Format("{0:0.0}", s_rendah);
                 
@@ -267,11 +270,11 @@ namespace Анкетирование
                 {
                     s_sedang = 1;
                 }
-                if (suhu >= ff && suhu <= gg)
+                if (suhu >= ff && suhu <= hh)
                 {
-                    s_sedang = (gg - suhu) / (gg - ff);
+                    s_sedang = (hh - suhu) / (hh - ff);
                 }
-                if (suhu > gg)
+                if (suhu > hh)
                 {
                     s_sedang = 0;
                 }
@@ -477,6 +480,7 @@ namespace Анкетирование
                 {
                     Int32 cnt_yes = port_db_helper.get_count_answed_yes(question_id);
                     percent = ((float)cnt_yes * 100.0) / (float)all_cnt;
+               
                 }
                 else //если это 2..5 то считаем среднее
                 {

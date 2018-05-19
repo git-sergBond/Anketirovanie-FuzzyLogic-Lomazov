@@ -32,14 +32,7 @@ namespace Анкетирование
             public TextBox f;
             public TextBox g;
             public TextBox h;
-            public TextBox f1;
-            public TextBox f2;
-            public TextBox f3;
-            public TextBox f4;
-            public TextBox f5;
-            public TextBox f6;
-            public TextBox f7;
-            public TextBox f8;
+
             public int id_rules;
 
             TextBox make_txt(object r)
@@ -61,14 +54,7 @@ namespace Анкетирование
                 f = make_txt(reader["f"]);
                 g = make_txt(reader["g"]);
                 h = make_txt(reader["h"]);
-                f1 = make_txt(reader["f1"]);
-                f2 = make_txt(reader["f2"]);
-                f3 = make_txt(reader["f3"]);
-                f4 = make_txt(reader["f4"]);
-                f5 = make_txt(reader["f5"]);
-                f6 = make_txt(reader["f6"]);
-                f7 = make_txt(reader["f7"]);
-                f8 = make_txt(reader["f8"]);
+                
                 id_rules = Int32.Parse(reader["id"].ToString());
 
 
@@ -130,7 +116,7 @@ namespace Анкетирование
             this.txt_id_test.Visible = false;
             this.btn_confirm.Visible = false;
             this.label1.Visible = true;
-
+            this.saveout.Visible = true;
             this.label3.Visible = true;
             this.label4.Visible = true;
             this.label5.Visible = true;
@@ -138,15 +124,6 @@ namespace Анкетирование
             this.label7.Visible = true;
             this.label8.Visible = true;
             this.label9.Visible = true;
-            this.label10.Visible = true;
-            this.label11.Visible = true;
-            this.label12.Visible = true;
-            this.label13.Visible = true;
-            this.label14.Visible = true;
-            this.label15.Visible = true;
-            this.label16.Visible = true;
-            this.label17.Visible = true;
-            this.saveout.Visible = true;
 
         }
 
@@ -157,7 +134,7 @@ namespace Анкетирование
 
             foreach (question_plus_typeQuest row in table_1.rows)
             {
-                str = ("update rules set a ='" + row.a.Text.ToString() + "', b ='" + row.b.Text.ToString() + "',  c ='" + row.c.Text.ToString() + "', d ='" + row.d.Text.ToString() + "', e ='" + row.e.Text.ToString() + "', f ='" + row.f.Text.ToString() + "',   g ='" + row.g.Text.ToString() + "', h ='" + row.h.Text.ToString() + "', f1 ='" + row.f1.Text.ToString() + "', f2 ='" + row.f2.Text.ToString() + "',  f3 ='" + row.f3.Text.ToString() + "', f4 ='" + row.f4.Text.ToString() + "', f5 ='" + row.f5.Text.ToString() + "', f6 ='" + row.f6.Text.ToString() + "',   f7 ='" + row.f7.Text.ToString() + "', f8 ='" + row.f8.Text.ToString() + "'  WHERE id='" + row.id_rules + "'");
+                str = ("update rules set a ='" + row.a.Text.ToString() + "', b ='" + row.b.Text.ToString() + "',  c ='" + row.c.Text.ToString() + "', d ='" + row.d.Text.ToString() + "', e ='" + row.e.Text.ToString() + "', f ='" + row.f.Text.ToString() + "',   g ='" + row.g.Text.ToString() + "', h ='" + row.h.Text.ToString() + "' WHERE id='" + row.id_rules + "'");
 
                 row.a.Text.ToString();
                 row.b.Text.ToString();
@@ -167,14 +144,6 @@ namespace Анкетирование
                 row.f.Text.ToString();
                 row.g.Text.ToString();
                 row.h.Text.ToString();
-                row.f1.Text.ToString();
-                row.f2.Text.ToString();
-                row.f3.Text.ToString();
-                row.f4.Text.ToString();
-                row.f5.Text.ToString();
-                row.f6.Text.ToString();
-                row.f7.Text.ToString();
-                row.f8.Text.ToString();
                 connection.Open();
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = str;

@@ -130,8 +130,8 @@ namespace Анкетирование
                         break;
                 }
                 activisatia = stepen_istinnosti * kof;
-                power_istinnosti.Text = stepen_istinnosti.ToString();
-                activisacia_txt.Text = activisatia.ToString();
+                power_istinnosti.Text = Convert.ToString(String.Format("{0:0.0}", stepen_istinnosti));
+                activisacia_txt.Text = Convert.ToString(String.Format("{0:0.0}", activisatia));
 
 
 
@@ -145,12 +145,13 @@ namespace Анкетирование
                     akkS = rezultat[1].activisatia;
                     akkV = rezultat[2].activisatia;
 
-                    def = ((aa + cc) * akkN + (bb + dd + ff + gg) * akkS + (ee + hh) * akkV) / (akkN * 2 + akkS * 4 + akkS * 2);
-                    if((akkN * 2 + akkS * 4 + akkS * 2) == 0)
+                    def = (((aa + cc) * akkN) + ((bb + dd + ff + gg) * akkS) + ((ee + hh) * akkV)) / ((akkN * 2) + (akkS * 4) + (akkV * 2));
+          
+                    if ((akkN * 2 + akkS * 4 + akkS * 2) == 0)
                     {
                         //MessageBox.Show("Не число /0");
                     }
-                    procent_defazific.Text = Convert.ToString(String.Format("{0:0.0}", def)) +"%";
+                    procent_defazific.Text =  Convert.ToString(String.Format("{0:0.0}", def)) +"%";
                 }
             }
         }
